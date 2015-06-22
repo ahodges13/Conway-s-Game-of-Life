@@ -9,5 +9,5 @@ This is a program that emulates Conway's Game of Life.  There are 4 rules:
 
 The grid is automatically set up as 10x10 cells.  You should click on whichever cells you'd like to begin alive, then click "Let's Play!" to proceed through each iteration of the evolution of the game.  
 
-This was built using generator-angular-fullstack & flexboxgrid.  To run from the command line:  
+This was built using [generator-angular-fullstack](https://github.com/DaftMonk/generator-angular-fullstack) & [flexboxgrid](https://github.com/kristoferjoseph/flexboxgrid).  To run from the command line:  
 `grunt serve`
