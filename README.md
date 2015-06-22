@@ -12,17 +12,21 @@ The grid is automatically set up as 10x10 cells.  You should click on whichever 
 This was built using [generator-angular-fullstack](https://github.com/DaftMonk/generator-angular-fullstack) & [flexboxgrid](https://github.com/kristoferjoseph/flexboxgrid).  
 
 ### Installation
-```git clone https://github.com/ahodges13/Conway-s-Game-of-Life.git yourDirectory  
+```  
+git clone https://github.com/ahodges13/Conway-s-Game-of-Life.git yourDirectory  
 cd yourDirectory  
 npm install  
-bower install```
+bower install  
+```
 
 ### Requirements
-*NodeJS  
-*Bower
-*Grunt CLI
-*Flexbox Grid
+* NodeJS  
+* Bower  
+* Grunt CLI  
+* Flexbox Grid
 
 ### Usage
-```cd yourDirectory  
-grunt serve```
+```  
+cd yourDirectory  
+grunt serve  
+```
