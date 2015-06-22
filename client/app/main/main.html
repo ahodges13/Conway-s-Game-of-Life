@@ -1,0 +1,35 @@
+<div ng-include="'components/navbar/navbar.html'"></div>
+
+<header class="hero-unit" id="banner">
+  <div class="container">
+    <h1>Conway's Game of Life!</h1>
+    <p class="lead">Choose which cells you want to start "alive", then click Let's Play! to have the grid move through one cycle.</p>
+  </div>
+</header>
+
+<div class="container pageContainer">
+  <h1 class="page-header">The Grid:</h1>
+
+  <!-- The Grid -->
+  <div class="gridContainer">
+    <div class="row" ng-repeat="row in grid">
+      <div class="col-xs-1" ng-repeat="cell in row track by $index">
+        <div class="box-row" ng-click="toggle($parent.$index, $index)" ng-class="{alive: cell}"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="btnContainer">
+    <button class= "btn" ng-click="play()">Let's Play!</button>
+    <button class= "btn" ng-click="clear()">Clear Grid</button>
+  </div>
+
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <p>Angular Fullstack v2.0.13 |
+      <a href="https://github.com/ahodges13">@ahodges13</a>
+    </p>
+  </div>
+</footer>
