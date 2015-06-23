@@ -4,6 +4,18 @@ angular.module('conwaysgameoflifeApp')
   .service('logic', function (_) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
+    //neighbour values
+    var TOP_LEFT = [-1, -1];
+    var TOP = [-1, 0];
+    var TOP_RIGHT = [-1, 1];
+    var MIDDLE_LEFT = [0, -1];
+    var MIDDLE_RIGHT = [0, 1];
+    var BOTTOM_LEFT = [1, -1];
+    var BOTTOM = [1, 0];
+    var BOTTOM_RIGHT = [1, 1];
+
+    var NEIGHBORS = [TOP_LEFT, TOP, TOP_RIGHT, MIDDLE_LEFT, MIDDLE_RIGHT, BOTTOM_LEFT, BOTTOM, BOTTOM_RIGHT];
+
     //Build the grid, based on specs
     this.startGame = function(height, width) {
       var grid = [];
@@ -63,16 +75,9 @@ angular.module('conwaysgameoflifeApp')
 
     //Count how many neighbours of this cell are alive
     this.getNeighbours = function(grid, row, col) {
-      var count = 0;
-      count += this.validCell(grid,row-1,col-1) ? 1 : 0;
-      count += this.validCell(grid,row-1,col) ? 1 : 0;
-      count += this.validCell(grid,row-1,col+1) ? 1 : 0;
-      count += this.validCell(grid,row,col-1) ? 1 : 0;
-      count += this.validCell(grid,row,col+1) ? 1 : 0;
-      count += this.validCell(grid,row+1,col-1) ? 1 : 0;
-      count += this.validCell(grid,row+1,col) ? 1 : 0;
-      count += this.validCell(grid,row+1,col+1) ? 1 : 0;
-      return count;
+      return _.filter(NEIGHBORS, function(neighbour){
+        return this.validCell(grid, neighbour[0]+row, neighbour[1]+col);
+      }, this).length;
     };
 
     //Check that a cell is within the bounds of the grid
