@@ -1,19 +1,19 @@
 'use strict';
 
 angular.module('conwaysgameoflifeApp')
-  .service('logic', function () {
+  .service('logic', function (_) {
     // AngularJS will instantiate a singleton by calling "new" on this function
 
     //Build the grid, based on specs
     this.startGame = function(height, width) {
       var grid = [];
-      for(var i=0;i<height;i++){
+      _(height).times(function(i){
         var row = [];
-        for(var k=0;k<width;k++){
+        _(width).times(function(k){
           row.push(false);
-        }
+        });
         grid.push(row);
-      }
+      });
       return grid;
     };
 
