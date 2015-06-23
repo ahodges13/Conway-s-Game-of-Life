@@ -31,26 +31,14 @@ angular.module('conwaysgameoflifeApp')
 
     //Run through one iteration of the game of life
     this.iterate = function(currentGrid) {
-      var newGrid = [];
-      for(var i=0;i<currentGrid.length;i++){
-        var newRow = [];
-        for(var k=0;k<currentGrid[i].length;k++){
-          //If cell is already alive, check if it will continue to live
-          if(currentGrid[i][k]){
-            var answer = this.willLive(currentGrid, i, k);
-            newRow.push(answer);
-          }
-          //If cell is already dead, check if it will be born to become alive
-          else {
-            var answer = this.isBorn(currentGrid, i, k);
-            newRow.push(answer);
-          }
-        }
-        newGrid.push(newRow);
-        newRow = [];
-      }
       //Repaint the new board, after the iteration is complete
-      return newGrid;
+      return _(currentGrid.length).times(function(i){
+        return _(currentGrid[i].length).times(function(k){
+          //If cell is already alive, check if it will continue to live
+          //If cell is already dead, check if it will be born to become alive
+          return currentGrid[i][k] ? this.willLive(currentGrid, i, k) : this.isBorn(currentGrid, i, k);
+        }, this);
+      }, this);
     };
 
     //Check is a cell that is alive will live through the iteration
