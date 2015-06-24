@@ -42,9 +42,10 @@ angular.module('conwaysgameoflifeApp')
       //Any live cell with two or three live neighbours lives on to the next generation
       var neighbours = this.getNeighbours(game, row, col);
       if(neighbours >= 2 && neighbours <=3){
-        game.stillAlive = true;
         return true;
       }
+      //Something has changed, keep playing
+      game.stillAlive = true;
       return false;
     };
 
@@ -53,6 +54,7 @@ angular.module('conwaysgameoflifeApp')
       //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction
       var neighbours = this.getNeighbours(game, row, col);
       if(neighbours == 3){
+        //Something has changed, keep playing
         game.stillAlive = true;
         return true;
       }

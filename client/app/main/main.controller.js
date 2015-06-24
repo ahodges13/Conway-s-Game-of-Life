@@ -26,18 +26,18 @@ angular.module('conwaysgameoflifeApp')
 
     //Start the game
     $scope.play = function() {
-      //Continuously loop through the steps until there are no more alive cells
-      // game.stillAlive = true;
-      // while(game.stillAlive){
-      //   $timeout(function(){
-      //     return logic.iterate(game);
-      //   }, 1000).then(function(result){
-      //     game = result;
-      //     $scope.grid = game.grid;
-      //   });
-      // }
-      game = logic.iterate(game);
-      $scope.grid = game.grid;
+      game.stillAlive = true;
+      continuous(game);
     };
+
+    function continuous() {
+      //Continuously loop through the steps until there are no more alive cells
+      if (game.stillAlive) {
+        console.log("got into the if statement");
+        game = logic.iterate(game);
+        $scope.grid = game.grid;
+        $timeout(continuous(), 1000);
+      }
+    }
 
   });
