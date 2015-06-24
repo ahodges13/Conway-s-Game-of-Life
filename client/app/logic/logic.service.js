@@ -18,16 +18,9 @@ angular.module('conwaysgameoflifeApp')
 
     //Build the grid, based on specs
     this.startGame = function(height, width) {
-      var grid = [];
-      _(height).times(function(i){
-        var row = [];
-        _(width).times(function(k){
-          row.push(false);
-        });
-        grid.push(row);
-      });
-      return grid;
-    };
+      var setFalse = function () { return false }
+      return _.times(height, function () { return _.times(width, setFalse) })
+    }
 
     //Run through one iteration of the game of life
     this.iterate = function(game) {
