@@ -30,48 +30,53 @@ angular.module('conwaysgameoflifeApp')
     };
 
     //Run through one iteration of the game of life
-    this.iterate = function(currentGrid) {
+    this.iterate = function(game) {
+      //Assume this is the last iteration, until a cell stays alive or is born
+      game.stillAlive = false;
       //Repaint the new board, after the iteration is complete
-      return _(currentGrid.length).times(function(i){
-        return _(currentGrid[i].length).times(function(k){
+      game.grid = _(game.grid.length).times(function(i){
+        return _(game.grid[i].length).times(function(k){
           //If cell is already alive, check if it will continue to live
           //If cell is already dead, check if it will be born to become alive
-          return currentGrid[i][k] ? this.willLive(currentGrid, i, k) : this.isBorn(currentGrid, i, k);
+          return game.grid[i][k] ? this.willLive(game, i, k) : this.isBorn(game, i, k);
         }, this);
       }, this);
+      return game;
     };
 
     //Check is a cell that is alive will live through the iteration
-    this.willLive = function(grid, row, col) {
+    this.willLive = function(game, row, col) {
       //Any live cell with two or three live neighbours lives on to the next generation
-      var neighbours = this.getNeighbours(grid, row, col);
+      var neighbours = this.getNeighbours(game, row, col);
       if(neighbours >= 2 && neighbours <=3){
+        game.stillAlive = true;
         return true;
       }
       return false;
     };
 
     //Check if a cell that is dead will be born
-    this.isBorn = function(grid, row, col) {
+    this.isBorn = function(game, row, col) {
       //Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction
-      var neighbours = this.getNeighbours(grid, row, col);
+      var neighbours = this.getNeighbours(game, row, col);
       if(neighbours == 3){
+        game.stillAlive = true;
         return true;
       }
       return false;
     };
 
     //Count how many neighbours of this cell are alive
-    this.getNeighbours = function(grid, row, col) {
+    this.getNeighbours = function(game, row, col) {
       return _.filter(NEIGHBORS, function(neighbour){
-        return this.validCell(grid, neighbour[0]+row, neighbour[1]+col);
+        return this.validCell(game, neighbour[0]+row, neighbour[1]+col);
       }, this).length;
     };
 
     //Check that a cell is within the bounds of the grid
-    this.validCell = function(grid, row, col) {
-      if(row>=0 && row<grid.length && col>=0 && col<grid[0].length){
-        if(grid[row][col]){
+    this.validCell = function(game, row, col) {
+      if(row>=0 && row<game.grid.length && col>=0 && col<game.grid[0].length){
+        if(game.grid[row][col]){
           return true;
         }
       }
