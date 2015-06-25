@@ -27,7 +27,7 @@ angular.module('conwaysgameoflifeApp')
     //Start the game
     $scope.play = function() {
       game.stillAlive = true;
-      continuous(game);
+      continuous();
     };
 
     function continuous() {
@@ -36,7 +36,7 @@ angular.module('conwaysgameoflifeApp')
         console.log("got into the if statement");
         game = logic.iterate(game);
         $scope.grid = game.grid;
-        $timeout(continuous(), 1000);
+        $timeout(continuous, 1000);
       }
     }
 
