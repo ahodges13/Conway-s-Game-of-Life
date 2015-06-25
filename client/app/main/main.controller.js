@@ -19,12 +19,8 @@ angular.module('conwaysgameoflifeApp')
       if($scope.width<=50){
         game.width = $scope.width;
         $scope.clear();
-      }      
+      }
     });
-
-    //Set up the grid when the page loads
-    game.grid = logic.startGame(game.height, game.width);
-    $scope.grid = game.grid;
 
     //Repaint the blank grid
     $scope.clear = function() {
@@ -36,6 +32,15 @@ angular.module('conwaysgameoflifeApp')
     $scope.toggle = function(row, col){
       game.grid[row][col] = !game.grid[row][col];
       $scope.grid = game.grid;
+    };
+
+    $scope.random = function(){
+      $scope.clear();
+      var times = _.random(1,game.height * game.width);
+      console.log("times = "+times);
+      _.times(times, function(){
+        game.grid[_.random(0,game.height-1)][_.random(0,game.width-1)] = true;
+      });
     };
 
     //Start the game
@@ -59,4 +64,7 @@ angular.module('conwaysgameoflifeApp')
       }
     }
 
+    //Set up the grid when the page loads
+    $scope.clear();
+    console.log("original game.grid = "+game.grid);
   });
