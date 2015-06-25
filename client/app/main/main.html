@@ -3,13 +3,24 @@
 <header class="hero-unit" id="banner">
   <div class="container">
     <h1>Conway's Game of Life!</h1>
-    <p class="lead">Choose which cells you want to start "alive", then click Let's Play! to have the grid move through one cycle.</p>
+    <p class="lead">Choose which cells you want to start "alive", then click Let's Play! to have the grid move through each cycle, until no new cells either die or are born.</p>
   </div>
 </header>
 
 <div class="container pageContainer">
   <h1 class="page-header">The Grid:</h1>
-
+  <div class="dimensions">
+    <label for="height">Height:
+      <input type="input"
+             ng-model="height"
+             ng-value="{{height}}">
+    </label>
+    <label for="width">Width:
+      <input type="input"
+             ng-model="width"
+             ng-value="{{width}}">
+    </label>
+  </div>
   <!-- The Grid -->
   <div class="gridContainer">
     <div class="row" ng-repeat="row in grid">

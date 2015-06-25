@@ -7,11 +7,12 @@
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+    margin: 20px 0;
 }
 
 .hero-unit {
     position: relative;
-    padding: 30px 15px;
+    padding: 0px 15px;
     color: #F5F5F5;
     text-align: center;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -20,8 +21,8 @@
 
 .footer {
     text-align: center;
-    padding: 30px 0;
-    margin-top: 70px;
+    padding: 20px 0;
+    margin-top: 20px;
     border-top: 1px solid #E5E5E5;
 }
 
@@ -44,7 +45,6 @@
 .btnContainer {
   display: flex;
   justify-content: flex-end;
-  margin-top: 25px;
 }
 
 .gridContainer .row {
@@ -57,4 +57,43 @@
 
 button {
   margin: 5px;
+}
+
+.dimensions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.dimensions label {
+  margin: 0 10px;
+  font-weight: normal;
+}
+
+.dimensions input {
+  width: 35px;
+}
+
+.page-header {
+  padding-bottom: 0px;
+  border-bottom: none;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.container {
+  margin-right: 7%;
+  margin-left: 7%;
+  width: 86%;
+}
+
+.col-xs-1 {
+  max-width: 23px;
+  flex-shrink: 1;
+  display: flex;
+  min-width: 1px;
+}
+
+.box-row {
+  margin-bottom: 5px;
 }

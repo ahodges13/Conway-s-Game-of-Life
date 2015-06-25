@@ -5,8 +5,20 @@ angular.module('conwaysgameoflifeApp')
 
     //Set up the game
     var game={};
-    game.height = 10;
-    game.width = 10;
+    $scope.height = 10;
+    $scope.width = 10;
+    game.height = $scope.height;
+    game.width = $scope.width;
+
+    $scope.$watch('height', function() {
+      game.height = $scope.height;
+      $scope.clear();
+    });
+
+    $scope.$watch('width', function() {
+      game.width = $scope.width;
+      $scope.clear();
+    });
 
     //Set up the grid when the page loads
     game.grid = logic.startGame(game.height, game.width);
