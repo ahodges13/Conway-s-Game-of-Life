@@ -30,8 +30,13 @@ angular.module('conwaysgameoflifeApp')
       continuous();
     };
 
+    //Stop the game
+    $scope.stop = function() {
+      game.stillAlive = false;
+    };
+
+    //Continuously loop through the steps until there are no more alive cells
     function continuous() {
-      //Continuously loop through the steps until there are no more alive cells
       if (game.stillAlive) {
         console.log("got into the if statement");
         game = logic.iterate(game);
