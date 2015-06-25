@@ -16,8 +16,10 @@ angular.module('conwaysgameoflifeApp')
     });
 
     $scope.$watch('width', function() {
-      game.width = $scope.width;
-      $scope.clear();
+      if($scope.width<=50){
+        game.width = $scope.width;
+        $scope.clear();
+      }      
     });
 
     //Set up the grid when the page loads

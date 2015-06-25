@@ -21,6 +21,7 @@
              ng-value="{{width}}">
     </label>
   </div>
+  <div ng-show="width>50" class="alert alert-danger" role="alert">Please select a width less than or equal to 50.</div>
   <!-- The Grid -->
   <div class="gridContainer">
     <div class="row" ng-repeat="row in grid">

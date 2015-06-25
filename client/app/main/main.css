@@ -97,3 +97,7 @@ button {
 .box-row {
   margin-bottom: 5px;
 }
+
+.alert-danger {
+  align-self: center;
+}
